@@ -25,12 +25,13 @@ SECRET_KEY = '!^l2rur3ckpc6-yfyy!9i%0=&6z73tm0mq9isj6-&)c^qxtkq!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['198.27.83.179', 'joyousapathy.com']
+ALLOWED_HOSTS = ['198.27.83.179', 'joyousapathy.com', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'landingpage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
