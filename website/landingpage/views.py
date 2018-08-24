@@ -28,5 +28,18 @@ def logout_view(request):
 def user_view(request):
     return render(request, 'landingpage/user.html', messages_alerts(request.user.get_username()))
 
+def ndi(request):
+    return render(request, 'landingpage/ndi/ndi.html')
+
+def pt(request):
+    return render(request, 'landingpage/ndi/pt.html')
+def et(request):
+    return render(request, 'landingpage/ndi/et.html')
+def ut(request):
+    return render(request, 'landingpage/ndi/ut.html')
+def mt(request):
+    return render(request, 'landingpage/ndi/mt.html')
+    
 # def (request):
 #     return render(request, 'landingpage/.html')
+# 
