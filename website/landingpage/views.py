@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import logout
 
 def messages_alerts(username):
@@ -9,7 +9,8 @@ def messages_alerts(username):
 
 # Create your views here.
 def index(request):
-    # request.user.get_username()
+    if (request.user.is_authenticated):
+        return HttpResponseRedirect('/user/')
     return render(request,'landingpage/home.html', messages_alerts(request.user.get_username()))
 
 def login(request):
