@@ -2,10 +2,13 @@ from django.db import models
 
 # Create your models here.
 
-class User(models.Model):
+class Exp(models.Model):
     username = models.CharField(max_length=32)
-    alerts = models.IntegerField()
-    messages = models.IntegerField()
+    method = models.CharField(max_length=2)
+    date = models.DateField()
+    task = models.CharField(max_length=32)
+    hours = models.DecimalField(max_digits=6, decimal_places=1)
+    remarks = models.CharField(max_length=64)
 
     def __str__(self):
         return self.username
