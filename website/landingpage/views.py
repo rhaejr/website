@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import logout
+from landingpage.models import Exp
 
 def messages_alerts(username):
     if not username:
@@ -33,13 +34,32 @@ def ndi(request):
     return render(request, 'landingpage/ndi/ndi.html')
 
 def pt(request):
-    return render(request, 'landingpage/ndi/pt.html')
+    try:
+        exp = Exp.objects.filter(method='pt')
+        return render(request, 'landingpage/ndi/pt.html', {'exp': exp})
+    except Exception as e:
+        return render(request, 'landingpage/404.html', {"e" : e})
+
 def et(request):
-    return render(request, 'landingpage/ndi/et.html')
+    try:
+        exp = Exp.objects.filter(method='et')
+        return render(request, 'landingpage/ndi/et.html', {'exp': exp})
+    except Exception as e:
+        return render(request, 'landingpage/404.html', {"e" : e})
+    
 def ut(request):
-    return render(request, 'landingpage/ndi/ut.html')
+    try:
+        exp = Exp.objects.filter(method='ut')
+        return render(request, 'landingpage/ndi/ut.html', {'exp': exp})
+    except Exception as e:
+        return render(request, 'landingpage/404.html', {"e" : e})
+
 def mt(request):
-    return render(request, 'landingpage/ndi/mt.html')
+    try:
+        exp = Exp.objects.filter(method='mt')
+        return render(request, 'landingpage/ndi/mt.html', {'exp': exp})
+    except Exception as e:
+        return render(request, 'landingpage/404.html', {"e" : e})
     
 # def (request):
 #     return render(request, 'landingpage/.html')

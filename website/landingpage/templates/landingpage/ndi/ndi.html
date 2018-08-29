@@ -15,4 +15,171 @@
         <a href="pt">PT</a>
     </div>
 </div>
+
+<div id="content" class="colM">
+
+    <h1>Add exp</h1>
+    <div id="content-main">
+
+
+
+        <form action="" method="post" id="exp_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="wlgb8i5wO5EJMBrZvJ2zx4dWyYydvUrMhJCwqEd42DTHm84LPMc2DheSpA0PvkEc">
+            <div>
+
+
+
+
+
+
+
+                <fieldset class="module aligned ">
+
+
+
+                    <div class="form-row field-username">
+
+
+                        <div>
+
+
+                            <label class="required" for="id_username">Username:</label>
+
+                            <input type="text" name="username" class="vTextField" id="id_username" maxlength="32"
+                                required="">
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row field-method">
+
+
+                        <div>
+
+
+                            <label class="required" for="id_method">Method:</label>
+
+                            <input type="text" name="method" class="vTextField" id="id_method" maxlength="2" required="">
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row field-date">
+
+
+                        <div>
+
+
+                            <label class="required" for="id_date">Date:</label>
+
+                            <input type="text" name="date" class="vDateField" id="id_date" size="10" required=""><span
+                                class="datetimeshortcuts">&nbsp;<a href="#">Today</a>&nbsp;|&nbsp;<a href="#" id="calendarlink0"><span
+                                        class="date-icon" title="Choose a Date"></span></a></span>
+
+
+
+                            <br><span class="timezonewarning">Note: You are 5 hours behind server time.</span></div>
+
+                    </div>
+
+                    <div class="form-row field-task">
+
+
+                        <div>
+
+
+                            <label class="required" for="id_task">Task:</label>
+
+                            <input type="text" name="task" class="vTextField" id="id_task" maxlength="32" required="">
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row field-hours">
+
+
+                        <div>
+
+
+                            <label class="required" for="id_hours">Hours:</label>
+
+                            <input type="number" name="hours" id="id_hours" step="0.1" required="">
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row field-remarks">
+
+
+                        <div>
+
+
+                            <label class="required" for="id_remarks">Remarks:</label>
+
+                            <input type="text" name="remarks" class="vTextField" id="id_remarks" maxlength="64"
+                                required="">
+
+
+
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="submit-row">
+
+                    <input type="submit" value="Save" class="default" name="_save">
+
+
+                    <input type="submit" value="Save and add another" name="_addanother">
+                    <input type="submit" value="Save and continue editing" name="_continue">
+
+
+                </div>
+
+
+
+                <script type="text/javascript" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js"
+                    data-model-name="exp">
+                </script>
+
+
+
+
+                <script type="text/javascript" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js"
+                    data-prepopulated-fields="[]">
+                </script>
+
+
+            </div>
+        </form>
+    </div>
+
+
+    <br class="clear">
+</div>
 {% endblock %}
