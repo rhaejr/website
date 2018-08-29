@@ -31,7 +31,11 @@ def user_view(request):
     return render(request, 'landingpage/user.html', messages_alerts(request.user.get_username()))
 
 def ndi(request):
-    return render(request, 'landingpage/ndi/ndi.html')
+    if request.method == 'GET':
+        return render(request, 'landingpage/ndi/ndi.html')
+    elif request.method == 'POST':
+        print('POST')
+        return render(request, 'landingpage/ndi/ndi.html')
 
 def pt(request):
     try:

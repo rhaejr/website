@@ -24,6 +24,7 @@
 
 
         <form action="" method="post" id="exp_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="wlgb8i5wO5EJMBrZvJ2zx4dWyYydvUrMhJCwqEd42DTHm84LPMc2DheSpA0PvkEc">
+            {% csrf_token %}
             <div>
 
 
@@ -61,7 +62,10 @@
 
                             <label class="required" for="id_method">Method:</label>
 
-                            <input type="text" name="method" class="vTextField" id="id_method" maxlength="2" required="">
+                            <input type="radio" name="method" value = 'mt'required=""> MT
+                            <input type="radio" name="method" value = 'et'required=""> ET
+                            <input type="radio" name="method" value = 'ut'required=""> UT
+                            <input type="radio" name="method" value = 'pt'required=""> PT
 
 
 
@@ -83,7 +87,7 @@
 
 
 
-                            <br><span class="timezonewarning">Note: You are 5 hours behind server time.</span></div>
+                            </div>
 
                     </div>
 
@@ -138,25 +142,13 @@
 
                 </fieldset>
 
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="submit-row">
 
                     <input type="submit" value="Save" class="default" name="_save">
 
 
-                    <input type="submit" value="Save and add another" name="_addanother">
-                    <input type="submit" value="Save and continue editing" name="_continue">
+                    <!-- <input type="submit" value="Save and add another" name="_addanother"> -->
+                    <!-- <input type="submit" value="Save and continue editing" name="_continue"> -->
 
 
                 </div>
