@@ -12,7 +12,7 @@ def messages_alerts(username):
 def index(request):
     if (request.user.is_authenticated):
         return HttpResponseRedirect('/user/')
-    return render(request,'landingpage/home.html', messages_alerts(request.user.get_username()))
+    return render(request, 'landingpage/home.html', messages_alerts(request.user.get_username()))
 
 def login(request):
     return render(request, 'landingpage/login.html', messages_alerts(request.user.get_username()))
@@ -34,7 +34,16 @@ def ndi(request):
     if request.method == 'GET':
         return render(request, 'landingpage/ndi/ndi.html')
     elif request.method == 'POST':
-        print('POST')
+        username = request.user.get_username()
+        method = request.POST['method']
+        date = request.POST['date']
+        task = request.POST['task']
+        hours = request.POST['hours']
+        remarks = request.POST['remarks']
+
+        exp = Exp(username=username, method=method, date=date, task=task, hours=hours, remarks=remarks)
+        exp.save()
+        print(username, method, date, task, hours, remarks)
         return render(request, 'landingpage/ndi/ndi.html')
 
 def pt(request):
