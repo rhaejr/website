@@ -1,4 +1,3 @@
-{% extends "landingpage/header.html" %}
 {% load staticfiles %}
 {% block content %}
 <meta charset="utf-8">
@@ -6,8 +5,6 @@
 
 .counties {
   fill: none;
-  stroke: black;
-  stroke-width:1px
 }
 
 .states {
@@ -37,12 +34,32 @@ var x = d3.scaleLinear()
 
 var color = d3.scaleThreshold()
 .domain([22,23.62,25.25,26.87,28.5,29,30.12,31.75,33.37])
-.range(['#fff5eb','#fee6ce','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#a63603','#7f2704']);
+.range(d3.schemeOranges[9]);
 
 var g = svg.append("g")
     .attr("class", "key")
     .attr("transform", "translate(0,40)");
 
+    var legend = svg.selectAll("g.legend")
+    .data([22,23.62,25.25,26.87,28.5,29,30.12,31.75,33.37])
+    .enter().append("g")
+    .attr("class", "legend");
+  
+    var ls_w = 20, ls_h = 20;
+  
+    legend.append("rect")
+    .attr("x", 850)
+    .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
+    .attr("width", ls_w)
+    .attr("height", ls_h)
+    .style("fill", function(d, i) { return color(d); })
+    .style("opacity", 0.8);
+  
+    legend.append("text")
+    .attr("x", 850)
+    .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
+    .text(function(d, i){ return ['____ $22','____ $23.62','____ $25.25','____ $26.87','____ $28.5','____ $29','____ $30.12','____ $31.75','____ $33.37'][i]; });    
+/*
 g.selectAll("rect")
   .data(color.range().map(function(d) {
       d = color.invertExtent(d);
@@ -55,7 +72,7 @@ g.selectAll("rect")
     .attr("x", function(d) { return x(d[0]); })
     .attr("width", function(d) { return x(d[1]) - x(d[0]); })
     .attr("fill", function(d) { return color(d[0]); });
-
+*/
 g.append("text")
     .attr("class", "caption")
     .attr("x", x.range()[0])
@@ -63,7 +80,15 @@ g.append("text")
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
-    .text("pay rate");
+    .text("Federal Wage Grade Pay");
+
+g.append("text")
+    .attr("class", "caption")
+    .attr("x", x.range()[0])
+    .attr("y", 6)
+    .attr("fill", "#000")
+    .attr("text-anchor", "start")
+    .text("Based on WG-10 top pay, by county");
 
 g.call(d3.axisBottom(x)
     .tickSize(13)
