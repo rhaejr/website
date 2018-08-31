@@ -4,6 +4,8 @@
 <style>
 
 .counties {
+    stroke: black;
+    stroke-width: 1px;
   fill: none;
 }
 
@@ -20,6 +22,7 @@
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script>
 
+    var count_color = {};
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -36,7 +39,6 @@ var thresholds = [22,23,24,25,26,27,28,29,30];
 var color = d3.scaleThreshold()
 .domain(thresholds)
 .range(d3.schemeOranges[9]);
-
 var g = svg.append("g")
     .attr("class", "key")
     .attr("transform", "translate(0,40)");
@@ -82,7 +84,7 @@ g.append("text")
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
-    .text("Federal Wage Grade Pay");
+    .text("Federal Wage Grade Pay 2016");
 
 g.append("text")
     .attr("class", "caption")
@@ -120,7 +122,12 @@ function ready(error, us) {
     .selectAll("path")
     .data(topojson.feature(us, us.objects.counties).features)
     .enter().append("path")
-      .attr("fill", function(d) { return color(d.rate = pay.get(d.id)); })
+      .attr("fill", function(d) {
+          c = color(d.rate = pay.get(d.id))
+          if(count_color[c]){count_color[c]++;}
+          else{count_color[c]= 1;}
+          
+        return c; })
       .attr("d", path)
     .append("title")
       .text(function(d) { return '$' + d.rate; });
@@ -136,5 +143,6 @@ function add_zero(id){
   }
   return id;
 };
+console.log(count_color)
 </script>
 {% endblock %}
