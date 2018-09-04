@@ -27,6 +27,7 @@
 # #     json.dump(data2, outfile)
 
 import csv
+import statistics
 
 
 def list_duplicates(seq):
@@ -45,12 +46,17 @@ with open('2016.2.csv', newline='') as f:
         if len(i[0]) == 4:
             i[0] = '0' + i[0]
         out.append(i)
-ids = [item[0] for item in out]
+ids = [float(item[1]) for item in out]
 
-for row in list_duplicates(ids):
-    print(row)
+
+# for row in list_duplicates(ids):
+#     print(row)
 
 # with open('2016.2.csv', 'w', newline='') as outfile:
 #     writer = csv.writer(outfile, delimiter=',')
 #     for row in out:
 #         writer.writerow(row)
+ids = ids[1:]
+print(len(ids))
+print(statistics.mean(ids))
+print(statistics.median_grouped(ids))
