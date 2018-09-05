@@ -47,7 +47,7 @@
         .attr("height", height);
     var blues = ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#08519c','#08306b']
     var oranges = ['#fff5eb','#fee6ce','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#a63603','#7f2704']
-    var thresholds = [22,23, 24, 25, 26, 27, 28, 29, 30];
+    var thresholds = [22, 23.5, 25.0, 26.5, 28.0, 29.5, 31.0, 32.5, 33];
     var counts = [26,51,384,446,414,457,403,393,612]
     var color = d3.scaleThreshold()
         .domain(thresholds)
@@ -89,7 +89,7 @@
             .data(topojson.feature(us, us.objects.counties).features)
             .enter().append("path")
             .attr("fill", function (d) {
-                c = color((d.rate = pay.get(d.id)-1))
+                c = color((d.rate = pay.get(d.id))-1)
                 if (count_color[c]) {
                     count_color[c]++;
                 } else {
