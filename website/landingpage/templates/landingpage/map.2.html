@@ -10,7 +10,7 @@
     }
     .county-borders {
         fill: none;
-        stroke: #fff;
+        stroke: black;
         stroke-width: 0.5px;
         stroke-linejoin: round;
         stroke-linecap: round;
@@ -45,8 +45,10 @@
         .attr("fill", '#D3D3D3')
         .attr("width", width)
         .attr("height", height);
+    var blues = ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#08519c','#08306b']
+    var oranges = ['#fff5eb','#fee6ce','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#a63603','#7f2704']
+    var thresholds = [22,23, 24, 25, 26, 27, 28, 29, 30];
     var counts = [26,51,384,446,414,457,403,393,612]
-    var thresholds = [22, 23, 24, 25, 26, 27, 28, 29, 30];
     var color = d3.scaleThreshold()
         .domain(thresholds)
         .range(d3.schemeOranges[9]);
@@ -63,7 +65,7 @@
         .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
         .attr("width", ls_w)
         .attr("height", ls_h)
-        .style("fill", function(d, i) { return color(d); })
+        .style("fill", function(d, i) { console.log(i); return color.range()[i]; })
         .style("opacity", 0.8);
       
         legend.append("text")
@@ -87,7 +89,7 @@
             .data(topojson.feature(us, us.objects.counties).features)
             .enter().append("path")
             .attr("fill", function (d) {
-                c = color(d.rate = pay.get(d.id))
+                c = color((d.rate = pay.get(d.id)-1))
                 if (count_color[c]) {
                     count_color[c]++;
                 } else {
