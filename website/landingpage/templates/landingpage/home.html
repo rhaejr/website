@@ -74,7 +74,7 @@
     <p>Group Median Hourly Rate : 28.06</p>
     <p>Ground Vehicle Mechanic just across town making $4+ more just because their facility was moved from outside of our wage area.</p>
     
-    <li> We have lost people to better paying jobs in the area, such as:</li>
+    <p> We have lost people to better paying jobs in the area, such as:</p>
         <ul>
             <li>Contract work for PM Office</li>
             <li>Eurocopter/Airbus (multiple times)</li>
@@ -87,5 +87,54 @@
                 </ul>
             </li>
         </ul>
+        <H6>Notes:</H6>
+        <ul>
+        {% for n in notes %}
+
+        <li>{{n}}</li>
+        {% endfor %}
+      </ul>
 </ul>
+<form action="" method="post" id="note_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="JUHGRbV7621ppRoU2PigI50wgNfl11sxwJYTVNOgE60mOGeux7IujrWLwx21nCKN">
+  {% csrf_token %}
+  <div>
+  
+    <fieldset class="module aligned ">
+      
+          <div class="form-row field-note">
+              
+              
+                  <div>
+                      
+                      
+                          <label class="required" for="id_note">Note:</label>
+                          
+                              <input type="text" name="note" class="vTextField" maxlength="128" required="" id="id_note">
+                          
+                      
+                      
+                  </div>
+              
+          </div>
+      
+  </fieldset>
+  
+  <div class="submit-row">
+  
+  <input type="submit" value="Save" class="default" name="_save">
+  
+  <!-- <input type="submit" value="Save and add another" name="_addanother">
+  <input type="submit" value="Save and continue editing" name="_continue"> -->
+  
+  </div>
+  
+      <script type="text/javascript" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js" data-model-name="note">
+      </script>
+  
+  <script type="text/javascript" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js" data-prepopulated-fields="[]">
+  </script>
+  
+  
+  </div>
+  </form>
 {% endblock %}

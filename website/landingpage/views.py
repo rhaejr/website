@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import logout
-from landingpage.models import Exp
+from landingpage.models import Exp, Note
 
 def messages_alerts(username):
     if not username:
@@ -10,9 +10,10 @@ def messages_alerts(username):
 
 # Create your views here.
 def index(request):
+    
     if (request.user.is_authenticated):
         return HttpResponseRedirect('/user/')
-    return render(request, 'landingpage/home.html', messages_alerts(request.user.get_username()))
+    return render(request, 'landingpage/home.html', send)
 
 def login(request):
     return render(request, 'landingpage/login.html', messages_alerts(request.user.get_username()))
@@ -28,7 +29,16 @@ def logout_view(request):
     return render(request, 'registration/logged_out.html', messages_alerts(request.user.get_username()))
 
 def user_view(request):
-    return render(request, 'landingpage/user.html', messages_alerts(request.user.get_username()))
+    send = messages_alerts(request.user.get_username())
+    send['notes'] = Note.objects.all()
+    if request.method == 'GET':
+        return render(request, 'landingpage/home.html',send)
+    elif request.method == 'POST':
+        note = request.POST['note']
+        post = Note(note=note)
+        post.save()
+        return render(request, request, 'landingpage/home.html', send)
+    
 
 def ndi(request):
     if request.method == 'GET':
