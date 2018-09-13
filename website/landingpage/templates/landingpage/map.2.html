@@ -89,7 +89,7 @@
             .data(topojson.feature(us, us.objects.counties).features)
             .enter().append("path")
             .attr("fill", function (d) {
-                c = color((d.rate = pay.get(d.id))-1)
+                c = color((d.rate = pay.get(d.id)))
                 if (count_color[c]) {
                     count_color[c]++;
                 } else {

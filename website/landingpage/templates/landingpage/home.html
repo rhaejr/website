@@ -95,46 +95,30 @@
         {% endfor %}
       </ul>
 </ul>
-<form action="" method="post" id="note_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="JUHGRbV7621ppRoU2PigI50wgNfl11sxwJYTVNOgE60mOGeux7IujrWLwx21nCKN">
-  {% csrf_token %}
-  <div>
-  
-    <fieldset class="module aligned ">
+  {% if user.is_staff %}
+    <form action="" method="post" id="note_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="JUHGRbV7621ppRoU2PigI50wgNfl11sxwJYTVNOgE60mOGeux7IujrWLwx21nCKN">
+      {% csrf_token %}
       
-          <div class="form-row field-note">
-              
-              
-                  <div>
-                      
-                      
-                          <label class="required" for="id_note">Note:</label>
-                          
-                              <input type="text" name="note" class="vTextField" maxlength="128" required="" id="id_note">
-                          
-                      
-                      
-                  </div>
-              
-          </div>
-      
-  </fieldset>
-  
-  <div class="submit-row">
-  
-  <input type="submit" value="Save" class="default" name="_save">
-  
-  <!-- <input type="submit" value="Save and add another" name="_addanother">
-  <input type="submit" value="Save and continue editing" name="_continue"> -->
-  
-  </div>
-  
-      <script type="text/javascript" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js" data-model-name="note">
+      <div>
+        <fieldset class="module aligned ">
+              <div class="form-row field-note">
+                      <div>
+                              <label class="required" for="id_note">Note:</label>
+                              
+                                  <input type="text" name="note" class="vTextField" maxlength="128" required="" id="id_note">
+                      </div>
+              </div>
+      </fieldset>
+      <div class="submit-row">
+      <input type="submit" value="Save" class="default" name="_save">
+      <!-- <input type="submit" value="Save and add another" name="_addanother">
+      <input type="submit" value="Save and continue editing" name="_continue"> -->
+      </div>
+          <script type="text/javascript" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js" data-model-name="note">
+          </script>
+      <script type="text/javascript" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js" data-prepopulated-fields="[]">
       </script>
-  
-  <script type="text/javascript" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js" data-prepopulated-fields="[]">
-  </script>
-  
-  
-  </div>
-  </form>
+      </div>
+    </form>
+  {% endif %}
 {% endblock %}

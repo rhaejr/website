@@ -37,7 +37,7 @@ def user_view(request):
         note = request.POST['note']
         post = Note(note=note)
         post.save()
-        return render(request, request, 'landingpage/home.html', send)
+        return render(request, 'landingpage/home.html', send)
     
 
 def ndi(request):
