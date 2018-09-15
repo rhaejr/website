@@ -10,7 +10,8 @@ def messages_alerts(username):
 
 # Create your views here.
 def index(request):
-    
+    send = messages_alerts(request.user.get_username())
+    send['notes'] = Note.objects.all()
     if (request.user.is_authenticated):
         return HttpResponseRedirect('/user/')
     return render(request, 'landingpage/home.html', send)
