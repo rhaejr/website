@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['198.27.83.179', 'joyousapathy.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'landingpage',
+    'django-console',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +58,12 @@ MIDDLEWARE = [
 LOGIN_REDIRECT_URL = '/user/'
 
 ROOT_URLCONF = 'website.urls'
+
+SECURE_CONSOLE = True  # False to allow http
+CONSOLE_WHITELIST = [
+                "127.0.0.1",
+                '75.66.145.229'
+]
 
 TEMPLATES = [
     {
