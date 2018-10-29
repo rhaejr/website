@@ -71,7 +71,8 @@
         legend.append("text")
         .attr("x", 849)
         .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 3;})
-        .text(function(d, i){ return '____$' + thresholds[i] + '      (' + counts[i] +')'; }); 
+        //.text(function(d, i){ return '____$' + thresholds[i] + '      (' + counts[i] +')'; });
+        .text(function(d, i){ return '____$' + thresholds[i]; });
     
     d3.queue()
         .defer(d3.json, "{% static '/data/us-10m.v2.json' %}")
